@@ -2,30 +2,26 @@
 {
     private static void Main(string[] args)
     {
-        int value;
-
-        do
+        double fat(int value)
         {
-            Console.Clear();
-            Console.Write("Digite um número que deseja calcular o fatorial: ");
-            value = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            if (value <= 0)
+            if (value == 0)
             {
-                Console.WriteLine("Você informou um valor inválido. Por favor, aperte a tecla ENTER e informe um valor válido para realizar o cálculo.");
-                Console.ReadKey();
+                return 1;
             }
-        } while (value <= 0);
+            else
+            {
+                return (value * fat(value - 1));
+            }
+        }
 
-        double fatorial = value;
-        int count = value;
+        int number;
+        double resposta;
 
-        do
-        {
-            fatorial = fatorial * (count - 1);
-            count--;
-        } while (count != 1);
+        Console.Write("Informe um valor: ");
+        number = int.Parse(Console.ReadLine());
 
-        Console.WriteLine($"O valor de {value}! é igual a {fatorial}");
+        resposta = fat(number);
+
+        Console.WriteLine(number + "! é igual a " + resposta);
     }
 }
